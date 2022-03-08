@@ -4,7 +4,16 @@ using System.Text;
 
 namespace ProductCore.Models
 {
-    class Beverage:Product
+    class Beverage : Product
     {
+        public override string Examine()
+        {
+            throw new NotImplementedException();
+        }
+
+        public override string Use()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

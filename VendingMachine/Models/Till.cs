@@ -4,10 +4,10 @@ using System.Text;
 
 namespace VendingMachine
 {
-    class Till //Take care about the Till
+    public class Till //Take care about the Till
     {
 
-        private static int[] denotations = new int[] { 1, 5, 10, 20, 50, 100, 200, 500, 1000 }; //valid denotations
+        private static int[] denotations = new int[] { 1,2, 5, 10, 20, 50, 100, 200, 500, 1000 }; //valid denotations
         private int[] change = new int[denotations.Length]; //Current amount of notes and coins in till
 
 
@@ -26,16 +26,16 @@ namespace VendingMachine
             return GetSaldoFromArray(change);
         }
 
-        private int GetSaldoFromArray(int[] tillArray) //Return Saldo from any array of coins and notes. 
+        public int GetSaldoFromArray(int[] tillArray) //Return Saldo from any array of coins and notes. 
         {
             int saldo = 0;
-            foreach (int denotation in denotations)
+            for (int index=0; (index<tillArray.Length) && (index<denotations.Length); index++ )
             {
-                saldo += denotations[denotation] * tillArray[denotation];
+                saldo += denotations[index] * tillArray[index];
             }
             return saldo;
         }
-        public int[] withDraw(int sum)
+        public int[] withDraw(int sum) //Withdraw array of coins and notes.
         {
             if (sum > GetSaldo()) return null;
             int[] payOut = new int[denotations.Length];
@@ -51,7 +51,7 @@ namespace VendingMachine
             }
             return payOut;
         }
-        public int refillChange(int[] newChange)
+        public int refillChange(int[] newChange) //Add coins and notes.
         {
             if (newChange.Length > denotations.Length) return 0;
             for (int index = 0; index <= denotations.Length; index++)

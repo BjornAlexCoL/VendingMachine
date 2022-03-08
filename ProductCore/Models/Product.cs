@@ -6,8 +6,8 @@ namespace ProductCore
 {
     public abstract class Product
     {
-        public abstract Examine();
-        public abstract Use();
+        public abstract string Examine();
+        public abstract string Use();
 
 
     }
