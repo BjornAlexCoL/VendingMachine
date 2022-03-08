@@ -7,24 +7,25 @@ namespace VendingMachine
     class Till //Take care about the Till
     {
 
-        private static int[] denotations = new int[] { 1, 5, 10, 20, 50, 100, 500, 1000 }; //valid denotations
-        private int[] change = new int[8]; //Current amount of notes and coins in till
+        private static int[] denotations = new int[] { 1, 5, 10, 20, 50, 100, 200, 500, 1000 }; //valid denotations
+        private int[] change = new int[denotations.Length]; //Current amount of notes and coins in till
 
 
         public int Increase(int index) //Add one coin or note to the till
         {
-            return ++change[index];
+            ++change[index];
+            return 1;
         }
         public int Decrease(int index) //witdraw one coin or note to the till if there is any left otherwise 0.
         {
-            return (((change[index]--)>=1)?1 : 0);
+            return (((change[index]--) >= 1) ? 1 : 0);
         }
 
         public int GetSaldo() //Return the till saldo
         {
             return GetSaldoFromArray(change);
-        }        
- 
+        }
+
         private int GetSaldoFromArray(int[] tillArray) //Return Saldo from any array of coins and notes. 
         {
             int saldo = 0;
@@ -37,8 +38,8 @@ namespace VendingMachine
         public int[] withDraw(int sum)
         {
             if (sum > GetSaldo()) return null;
-            int[] payOut = new int[8];
-            for (int index = 7; index >= 0; index--)
+            int[] payOut = new int[denotations.Length];
+            for (int index = denotations.Length - 1; index >= 0; index--)
             {
                 if (sum >= denotations[index])
                 {
@@ -46,17 +47,14 @@ namespace VendingMachine
                     {
                         sum -= (Decrease(index) > 0) ? denotations[index] : 0;
                     }
-                    
-                                    
-                 
                 }
             }
             return payOut;
         }
         public int refillChange(int[] newChange)
         {
-            if (newChange.Length > 8) return 0;
-            for (int index = 0; index <= 7; index++)
+            if (newChange.Length > denotations.Length) return 0;
+            for (int index = 0; index <= denotations.Length; index++)
             {
                 change[index] += newChange[index];
             }
