@@ -6,32 +6,32 @@ using NutritionCore.Models;
 
 namespace NutritionCore.Services
 {
-    class NutritionUtil:INutritionUtils
+    public class NutritionUtils : INutritionUtils
     {
         List<Nutrition> nutritionList = new List<Nutrition>();
 
-        public NutritionUtil()
+        public NutritionUtils()
         {
         }
 
         public Nutrition AddIfNotExist(Nutrition nutrition)
         {
-            Nutrition newNutrition=null;
+            Nutrition newNutrition = null;
             if (!isNutritionInlist(nutrition))
             {
                 nutritionList.Add(nutrition);
             }
-            
+
             return newNutrition;
 
         }
 
-          public string EnergyDeclaration()
+        public string EnergyDeclaration()
         {
             string energyContent = "";
-            for (int index = 0; index < nutritionList.Count;index++)
+            for (int index = 0; index < nutritionList.Count; index++)
             {
-                energyContent = energyContent + nutritionList[index].EnergyDeclaration()+((index<(nutritionList.Count-1))?", ":"");
+                energyContent = energyContent + nutritionList[index].EnergyDeclaration() + ((index < (nutritionList.Count - 1)) ? ", " : "");
 
             }
             return energyContent;
@@ -39,7 +39,7 @@ namespace NutritionCore.Services
 
         public double EnergyValue()
         {
-            double energyValue =0;
+            double energyValue = 0;
             foreach (Nutrition nutrition in nutritionList)
             {
                 energyValue += nutrition.EnergyValue();
@@ -62,14 +62,9 @@ namespace NutritionCore.Services
                     return true;
                 }
             }
-        return false;
+            return false;
 
         }
 
-
-
-        /*public string EnergyContent()
-        {
-        }*/
     }
 }

@@ -15,10 +15,9 @@ namespace NutritionCore.Models
             this.caption = caption;
 
         }
-        public Nutrition(string caption, double energy,double quantity)
+        public Nutrition(string caption, double energy,double quantity):this (caption,energy)
         {
-            this.energy = energy;
-            this.caption = caption;
+  
             Quantity = quantity;
 
         }

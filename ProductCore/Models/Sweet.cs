@@ -4,8 +4,10 @@ using System.Text;
 
 namespace ProductCore.Models
 {
-    class Sweets : Product
+    class Sweet : Product
     {
+        public Sweet(string caption, double content, string contentUnit, string ContainerType, int cost, int stock) : base(caption, content, contentUnit, ContainerType, cost, stock) { }
+
         public override string Examine()
         {
             throw new NotImplementedException();

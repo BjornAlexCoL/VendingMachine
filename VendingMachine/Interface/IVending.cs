@@ -5,12 +5,12 @@ using ProductCore;
 
 namespace VendingMachine.Interface
 {
-    interface IVending
+    public interface IVending
     {
-        Product Purchase();
-        List<string> ShowAll();
-        String Details(Product product);
-        void InsertMoney();
-        int EndTransaction();
+        public Product Purchase();
+        public List<string> ShowAll();
+        public String Details(Product product);
+        public void InsertMoney();
+        public int EndTransaction();
     }
 }

@@ -11,6 +11,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "VendingMachineTest", "Vendi
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "NutritionCore", "NutritounCore\NutritionCore.csproj", "{C706A844-0F6B-41F0-8199-FB729D5904F3}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleMenues", "ConsoleMenues\ConsoleMenues.csproj", "{932C5958-69E8-4B84-904D-C8B67C4EADD3}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -33,6 +35,10 @@ Global
 		{C706A844-0F6B-41F0-8199-FB729D5904F3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C706A844-0F6B-41F0-8199-FB729D5904F3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C706A844-0F6B-41F0-8199-FB729D5904F3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{932C5958-69E8-4B84-904D-C8B67C4EADD3}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{932C5958-69E8-4B84-904D-C8B67C4EADD3}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{932C5958-69E8-4B84-904D-C8B67C4EADD3}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{932C5958-69E8-4B84-904D-C8B67C4EADD3}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -10,6 +10,11 @@ namespace VendingMachine
         private static int[] denotations = new int[] { 1,2, 5, 10, 20, 50, 100, 200, 500, 1000 }; //valid denotations
         private int[] change = new int[denotations.Length]; //Current amount of notes and coins in till
 
+        public Till() { }
+        public Till(int [] startChange)
+        {
+            refillChange(startChange);
+        }
 
         public int Increase(int index) //Add one coin or note to the till
         {
@@ -54,11 +59,21 @@ namespace VendingMachine
         public int refillChange(int[] newChange) //Add coins and notes.
         {
             if (newChange.Length > denotations.Length) return 0;
-            for (int index = 0; index <= denotations.Length; index++)
+            for (int index = 0; ((index < denotations.Length) && (index<newChange.Length)); index++)
             {
                 change[index] += newChange[index];
             }
             return GetSaldoFromArray(newChange);
         }
+        public List<string> ShowDenotations()
+        {
+            List <string> showDenotations= null;
+            for(int index=0;index<denotations.Length; index++)
+            {
+                showDenotations.Add( $"{(index + 1)}. {denotations[index]}kr");
+            }
+            return showDenotations;
+        }
+
     }
 }
