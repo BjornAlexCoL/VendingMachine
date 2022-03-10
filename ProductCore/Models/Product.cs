@@ -6,6 +6,7 @@ namespace ProductCore
 {
     public abstract class Product
     {
+        NutritionUtils
         public abstract string Examine();
         public abstract string Use();
 
