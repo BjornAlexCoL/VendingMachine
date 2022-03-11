@@ -9,6 +9,7 @@ namespace ProductCore.Services
     {
         //Create
         public Product AddProduct(Product product);
+        public Product AddProduct();
         //Read
         public List<Product> FindSoldOut();
         public List<Product> FindStillLeft();

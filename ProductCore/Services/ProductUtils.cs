@@ -19,6 +19,10 @@ namespace ProductCore.Services
         {
             throw new NotImplementedException();
         }
+        public Product AddProduct()
+        {
+            throw new NotImplementedException();
+        }
 
         public bool AddUnitsToStock(int productId, int amount)
         {

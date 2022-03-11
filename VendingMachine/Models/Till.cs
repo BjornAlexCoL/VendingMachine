@@ -7,11 +7,11 @@ namespace VendingMachine
     public class Till //Take care about the Till
     {
 
-        private static int[] denotations = new int[] { 1,2, 5, 10, 20, 50, 100, 200, 500, 1000 }; //valid denotations
+        private static int[] denotations = new int[] { 1, 2, 5, 10, 20, 50, 100, 200, 500, 1000 }; //valid denotations
         private int[] change = new int[denotations.Length]; //Current amount of notes and coins in till
 
         public Till() { }
-        public Till(int [] startChange)
+        public Till(int[] startChange)
         {
             RefillChange(startChange);
         }
@@ -34,7 +34,7 @@ namespace VendingMachine
         public int GetSaldoFromArray(int[] tillArray) //Return Saldo from any array of coins and notes. 
         {
             int saldo = 0;
-            for (int index=0; (index<tillArray.Length) && (index<denotations.Length); index++ )
+            for (int index = 0; (index < tillArray.Length) && (index < denotations.Length); index++)
             {
                 saldo += denotations[index] * tillArray[index];
             }
@@ -59,7 +59,7 @@ namespace VendingMachine
         public int RefillChange(int[] newChange) //Add coins and notes.
         {
             if (newChange.Length > denotations.Length) Array.Resize<int>(ref newChange, denotations.Length);//If list of changes is bigger then denotations truncate it.
-            for (int index = 0; ((index < denotations.Length) && (index<newChange.Length)); index++)
+            for (int index = 0; ((index < denotations.Length) && (index < newChange.Length)); index++)
             {
                 change[index] += newChange[index];
             }
@@ -67,24 +67,27 @@ namespace VendingMachine
         }
         public List<string> ShowDenotations()
         {
-            List <string> showDenotations= new List<string>();
-            for(int index=0;index<denotations.Length; index++)
+            List<string> showDenotations = new List<string>();
+            for (int index = 0; index < denotations.Length; index++)
             {
-                showDenotations.Add( $"{(index + 1)}. {denotations[index]}kr ({change[index]})");
+                showDenotations.Add($"{(index + 1)}. {denotations[index]}kr ({change[index]})");
             }
-              
+
             return showDenotations;
         }
         public List<string> ShowSaldo()
         {
-            List <string> showDenotations= new List<string>();
-            for(int index=0;index<denotations.Length; index++)
+            List<string> showDenotations = new List<string>();
+            for (int index = 0; index < denotations.Length; index++)
             {
-                showDenotations.Add( $"{denotations[index]}kr {change[index]}({change[index]*denotations[index]})");
+                showDenotations.Add($"{denotations[index]}kr {change[index]}({change[index] * denotations[index]})");
             }
-            showDenotations.Add($"Total saldo {GetSaldo()} kr");    
             return showDenotations;
         }
-
+        public void Flush()
+        {
+            for (int index = 0; index < change.Length; change[index++] = 0) ;
+            
+        }
     }
 }

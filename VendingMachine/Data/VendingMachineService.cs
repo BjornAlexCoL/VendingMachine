@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Text;
 using ConsoleMenues.Views;
 using ProductCore;
 using ProductCore.Services;
@@ -14,7 +13,7 @@ namespace VendingMachine.Data
         Menues menues = new Menues();
         Till VendingMachineChangePool = new Till(new int[]{50,50,50,50,50,50,50,50,50});
         Till moneyPool= new Till();
-        
+
         public Product Purchase()
         {
             int productIndex= menues.PurchaseMenue(productUtils.ShowAll());
@@ -46,8 +45,19 @@ namespace VendingMachine.Data
 
         public int EndTransaction()
         {
-            throw new NotImplementedException();
+            int saldo =moneyPool.GetSaldo();
+            if (menues.EndSession(moneyPool.ShowSaldo(), saldo))
+            {
+                moneyPool.Flush();
+                return 0;
+            }
+            
+            return 1;
         }
 
+        public Product AddProduct()
+        {
+            return productUtils.AddProduct();
+        }
      }
 }
