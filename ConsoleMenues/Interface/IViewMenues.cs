@@ -4,11 +4,13 @@ using System.Text;
 
 namespace ConsoleMenues
 {
-    interface IViewMenues
+    interface IMenues
     {
-        public int ViewPurchaseMenue(List<String> menueItems);
-        public int ViewInsertMoney(List<String> menueItems);
+        public int PurchaseMenue(List<String> menueItems);
+        public int InsertMoneyMenue(List<String> menueItems);
+        public int ShowProductsMenue(List<String> menueItems);
+        public int MainMenue();
 
-
+        public int ServiceMenue();
     }
 }

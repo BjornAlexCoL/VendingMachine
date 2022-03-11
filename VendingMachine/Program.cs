@@ -1,4 +1,6 @@
 ﻿using System;
+using VendingMachine.Data;
+using ConsoleMenues.Views;
 
 namespace VendingMachine
 {
@@ -6,7 +8,16 @@ namespace VendingMachine
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World!");
+            Menues menue = new Menues();
+            VendingMachineService vendingMachineService = new VendingMachineService();
+            int menueChoice = 0;
+            do
+            {
+                menueChoice = menue.MainMenue();
+            }
+            while (menueChoice != 0);
         }
+
+
     }
 }

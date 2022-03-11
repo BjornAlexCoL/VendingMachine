@@ -8,11 +8,17 @@ namespace VendingMachineTest.Data
 {
     public class VendingMachineServiceTest
     {
+        VendingMachineService vendingMachineService = new VendingMachineService();
         [Fact]
         public void PurchaseTest()
         {
-            VendingMachineService vendingMachineService = new VendingMachineService();
             vendingMachineService.Purchase();
+        }
+
+        [Fact]
+        public void InsertMoneyTest()
+        {
+            vendingMachineService.InsertMoney();
         }
     }
 }

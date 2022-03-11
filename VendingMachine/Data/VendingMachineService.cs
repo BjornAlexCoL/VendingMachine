@@ -11,13 +11,13 @@ namespace VendingMachine.Data
     public class VendingMachineService: IVending
     {
         ProductUtils productUtils = new ProductUtils();
-        ViewMenues views = new ViewMenues();
+        Menues menues = new Menues();
         Till VendingMachineChangePool = new Till(new int[]{50,50,50,50,50,50,50,50,50});
         Till moneyPool= new Till();
         
         public Product Purchase()
         {
-            int productIndex= views.ViewPurchaseMenue(productUtils.ShowAll());
+            int productIndex= menues.PurchaseMenue(productUtils.ShowAll());
             Product product = productUtils.FindById(productIndex);
             return product;
         }
@@ -34,7 +34,14 @@ namespace VendingMachine.Data
 
         public void InsertMoney()
         {
-            throw new NotImplementedException();
+            int tillIndex = 0;
+            do
+            {
+                tillIndex = menues.InsertMoneyMenue(moneyPool.ShowDenotations());
+                if (tillIndex > 0)
+                { moneyPool.Increase(tillIndex - 1); }
+            }
+            while (tillIndex > 0);
         }
 
         public int EndTransaction()
