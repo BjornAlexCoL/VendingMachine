@@ -23,7 +23,12 @@ namespace VendingMachine
         }
         public int Decrease(int index) //witdraw one coin or note to the till if there is any left otherwise 0.
         {
-            return (((change[index]--) >= 1) ? 1 : 0);
+            if (change[index] > 0)
+            {
+                change[index]--;
+                return 1;
+            }
+            return 0;
         }
 
         public int GetSaldo() //Return the till saldo
@@ -40,18 +45,24 @@ namespace VendingMachine
             }
             return saldo;
         }
+        public int[] GetTill()
+        {
+            return change;
+        }
+        //Withdraw array of coins and notes.
         public int[] Withdraw(int sum) //Withdraw array of coins and notes.
         {
-            if (sum > GetSaldo()) return null;
             int[] payOut = new int[denotations.Length];
-            for (int index = denotations.Length - 1; index >= 0; index--)
+            if (sum <= GetSaldo())
             {
-                if (sum >= denotations[index])
+                for (int index = denotations.Length - 1; index >= 0; index--)
                 {
-                    for (int giveBack = (sum % denotations[index]); giveBack > 0; giveBack--)
+                    while (change[index] > 0 && sum >= denotations[index])
                     {
-                        sum -= (Decrease(index) > 0) ? denotations[index] : 0;
-                    }
+                        sum -= denotations[index];
+                        Decrease(index);
+                        payOut[index]++;
+                    };
                 }
             }
             return payOut;
@@ -87,7 +98,7 @@ namespace VendingMachine
         public void Flush()
         {
             for (int index = 0; index < change.Length; change[index++] = 0) ;
-            
+
         }
     }
 }

@@ -7,9 +7,17 @@ namespace ProductCore.Services
 {
     public class ProductUtils : IProductUtils
     {
-        List<Product> productList = new List<Product>();
 
-        public ProductUtils(){}
+        List<Product> productList = new List<Product>();
+        public ProductUtils() { }
+        public ProductUtils(Product[] foundationSupply)
+        {
+        foreach(Product product in foundationSupply)
+            {
+                AddProduct(product);
+            }
+        }
+
         public Nutrition AddNutrition(Nutrition nutrition)
         {
             throw new NotImplementedException();
