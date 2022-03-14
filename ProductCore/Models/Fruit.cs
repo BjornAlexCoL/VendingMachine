@@ -7,7 +7,7 @@ namespace ProductCore.Models
     public class Fruit : Product
     {
 
-        public Fruit(string caption,string latinFamily,string latinSpiecemen, double content, string contentUnit, string ContainerType, int cost, int stock, bool carbonated) 
+        public Fruit(string caption,string latinFamily,string latinSpiecemen, double content, string contentUnit, string ContainerType, int cost, int stock) 
             : base(caption, content, contentUnit, ContainerType, cost, stock)
         {
             LatinFamily = latinFamily;

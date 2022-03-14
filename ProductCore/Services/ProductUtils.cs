@@ -25,7 +25,10 @@ namespace ProductCore.Services
 
         public Product AddProduct(Product product)
         {
-            throw new NotImplementedException();
+            if (product != null) {
+                productList.Add(product);
+                }
+            return product;
         }
         public Product AddProduct()
         {
@@ -79,7 +82,7 @@ namespace ProductCore.Services
 
         public List<string> ShowAll()
         {
-            List<String> showProductLista=null;
+            List<String> showProductLista=new List<string>();
             string showProduct;
             foreach(Product product in productList)
             {
